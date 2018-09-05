@@ -6,6 +6,7 @@ public class TreesGrowth : MonoBehaviour {
     public Transform content;
     public float growSpeed;
     public WoodCarrier woodCarrier;
+    public int damage;
 
     public Queue<GameObject> treeBodyQ;
     public GameObject woodPrefab;
