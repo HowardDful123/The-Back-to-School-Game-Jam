@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TreeBody : MonoBehaviour {
     public int health;
-
+    
     public bool isDestroyed;
 
 
@@ -39,7 +39,7 @@ public class TreeBody : MonoBehaviour {
 
     public void DealDamage()
     {
-        health--;
+        health -= GetComponentInParent<TreesGrowth>().damage;
         ChangeColor();
     }
 
