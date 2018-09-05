@@ -7,6 +7,7 @@ public class TreeBody : MonoBehaviour {
 
     public bool isDestroyed;
 
+
     private bool colorChanged;
     private SpriteRenderer sprite;
     private float timeElaspedColor;

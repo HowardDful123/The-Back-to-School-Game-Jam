@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Floor
   - Wood
+  - PlayerCollider
   layers:
   - Default
   - TransparentFX
