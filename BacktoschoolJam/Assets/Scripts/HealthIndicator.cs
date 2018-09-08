@@ -8,6 +8,6 @@ public class HealthIndicator : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        GetComponent<TextMesh>().text = "Health: " + GetComponentInParent<TreeBody>().health;
+        GetComponent<TextMeshPro>().text = "Health: " + GetComponentInParent<TreeBody>().health;
 	}
 }

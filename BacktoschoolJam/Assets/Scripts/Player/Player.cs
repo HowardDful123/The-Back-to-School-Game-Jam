@@ -4,18 +4,24 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
     public float speed = 5;
+    public float attackSpeed;
+    public float delaytime;
 
+    private Animator playerAnimation;
+    private bool isAttack;
+    private bool isAttackAnimation;
     private Rigidbody2D rb;
     private BoxCollider2D hitCollider;
-    private bool isAttack;
-    public float delaytime;
     private float delayspeed;
     private bool attackDelay;
-    public float attackSpeed; 
+
+
     // Use this for initialization
     void Start () {
         rb = GetComponent<Rigidbody2D>();
         hitCollider = this.transform.GetChild(1).GetComponent<BoxCollider2D>();
+        playerAnimation = GetComponent<Animator>();
+
 	}
 	
 	// Update is called once per frame
@@ -26,21 +32,27 @@ public class Player : MonoBehaviour {
         {
             rb.velocity = new Vector2(speed, rb.velocity.y);
             transform.localScale = new Vector2(1, 1);
+
+            playerAnimation.SetFloat("move", Mathf.Abs(speed));
         }
         else if (Input.GetKey(KeyCode.A))
         {
             rb.velocity = new Vector2(-speed, rb.velocity.y);
             transform.localScale = new Vector2(-1, 1);
+            playerAnimation.SetFloat("move", Mathf.Abs(speed));
         }
         else
         {
             rb.velocity = new Vector2(0, rb.velocity.y);
+            playerAnimation.SetFloat("move", 0);
         }
 
         if (isAttack)
         {
             attackSpeed += Time.deltaTime;
-            if (attackSpeed >= 0.2f)
+            AttackAnimation();
+            ResetAnimation();
+            if (attackSpeed >= 0.05f)
             {
                 attackSpeed = 0;
                 isAttack = false;
@@ -73,5 +85,18 @@ public class Player : MonoBehaviour {
     {
         hitCollider.enabled = true;
         isAttack = true;
+        isAttackAnimation = true;
+    }
+
+    private void AttackAnimation()
+    {
+        if (isAttackAnimation)
+        {
+            playerAnimation.SetTrigger("attack");
+        }
+    }
+    private void ResetAnimation()
+    {
+        isAttackAnimation = false;
     }
 }

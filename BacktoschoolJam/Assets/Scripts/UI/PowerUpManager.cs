@@ -1,42 +1,44 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PowerUpManager : MonoBehaviour {
     public GameObject powerUpUIPanel;
+    public Text capacityText;
+    public Text capacityCost;
     public WoodCarrier woodCarrier;
+    public Money money;
+    public int cost;
 
-    private static bool isOnUI;
-	
-	// Update is called once per frame
-	void Update () {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (isOnUI)
-            {
-                Resume();
-            }
-            else
-            {
-                Paused();
-            }
-        }
+
+
+    void Update()
+    {
+        capacityText.text = "Capacity: " + woodCarrier.plankNumber + "/" + woodCarrier.plankCapacity;    
+        capacityCost.text = "Cost: " + cost;
     }
 
     public void CapacityUp()
     {
-        woodCarrier.plankCapacity += 10;
+        if (money.moneyValue >= cost)
+        {
+            woodCarrier.plankCapacity += 10;
+            money.moneyValue -= cost;
+            cost += 20;
+        }
+        
     }
 
-    public void Resume()
+    public void ShopExit()
     {
         powerUpUIPanel.SetActive(false);
-        isOnUI = false;
+        Time.timeScale = 1f;
     }
 
-    public void Paused()
+    public void ShopOn()
     {
         powerUpUIPanel.SetActive(true);
-        isOnUI = true;
+        Time.timeScale = 0;
     }
 }

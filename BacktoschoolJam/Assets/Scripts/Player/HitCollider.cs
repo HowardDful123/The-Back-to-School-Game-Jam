@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class HitCollider : MonoBehaviour {
 
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Wood"))
         {
@@ -13,5 +12,12 @@ public class HitCollider : MonoBehaviour {
             treebody.DealDamage();
             Debug.Log("Dealing Damage");
         }
+        if (collision.gameObject.CompareTag("treeTop"))
+        {
+            TreeTop treetop = collision.transform.GetComponent<TreeTop>();
+            treetop.DealDamage();
+            Debug.Log("Dealing Damage");
+        }
     }
+
 }
