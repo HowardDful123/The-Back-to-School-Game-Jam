@@ -1,20 +1,42 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 using UnityEngine.UI;
 
 public class FertilizerUp : MonoBehaviour {
     public TreesGrowth treeGrowth;
     public Transform imageLevel;
+    public TextMeshProUGUI text;
+    public Money money;
     public int level;
+    public int cost;
+
+    public void Update()
+    {
+        if (level < 4)
+        {
+            text.text = "Cost: " + cost;
+        }
+        else
+        {
+            text.text = "Level Maxed";
+        }
+        
+    }
 
     public void levelUp()
     {
-        ChangeLevelColor();
-        if (level < 4)
+        if (money.moneyValue >= cost)
         {
-            level++;
-            treeGrowth.GetComponent<TreesGrowth>().growSpeed -= 0.75f;
+            if (level < 4)
+            {
+                ChangeLevelColor();
+                level++;
+                treeGrowth.GetComponent<TreesGrowth>().growSpeed -= 1f;
+                money.moneyValue -= cost;
+                 cost += 10;
+            }
         }
     }
 

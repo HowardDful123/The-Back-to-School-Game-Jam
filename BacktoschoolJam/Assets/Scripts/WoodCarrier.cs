@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class WoodCarrier : MonoBehaviour {
@@ -18,7 +19,7 @@ public class WoodCarrier : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        GetComponentInChildren<TextMesh>().text = "Capacity: " + plankNumber + " / " + plankCapacity;
+        GetComponentInChildren<TextMeshPro>().text = "Capacity: " + plankNumber + " / " + plankCapacity;
     }
 
     public void AddPlank()

@@ -1,27 +1,47 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 using UnityEngine.UI;
 
 public class AttackDamageUp : MonoBehaviour {
-    public TreesGrowth treeGrowth;
+    public TreesGrowth treesGrowth;
     public Transform imageLevel;
+    public TextMeshProUGUI text;
+    public Money money;
     public int level;
+    public int cost;
+
+    public void Update()
+    {
+        if (level < 7)
+        {
+            text.text = "Cost: " + cost;
+        }
+        else
+        {
+            text.text = "Level Maxed";
+        }
+    }
 
     public void levelUp()
     {
-        ChangeLevelColor();
-        if (level < 4)
+        if (money.moneyValue >= cost)
         {
-            level++;
-            treeGrowth.GetComponent<TreesGrowth>().damage++;
+            if (level < 7)
+            {
+                ChangeLevelColor();
+                level++;
+                treesGrowth.GetComponent<TreesGrowth>().damage++;
+                money.moneyValue -= cost;
+                cost *= 2;
+            }
         }
-        
     }
 
     public void ChangeLevelColor()
     {
-        if (level < 4)
+        if (level < 7)
         {
             imageLevel.GetComponent<Transform>().GetChild(level).GetComponent<Image>().color = new Color(1f, 0, 0, .7f);
         }
