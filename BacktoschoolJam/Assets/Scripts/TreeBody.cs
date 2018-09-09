@@ -34,14 +34,17 @@ public class TreeBody : MonoBehaviour {
             if (timeElaspedColor >= 0.25f)
             {
                 timeElaspedColor = 0;
-                colorChanged = false;
                 ResetColor();
+                colorChanged = false;
             }
         }
 	}
 
     public void DealDamage()
     {
+        GetComponentInParent<AudioSource>().volume = Random.Range(0.7f, 1f);
+        GetComponentInParent<AudioSource>().pitch = Random.Range(0.8f, 1.1f);
+        GetComponentInParent<AudioSource>().Play();
         health -= GetComponentInParent<TreesGrowth>().damage;
         ChangeColor();
     }
