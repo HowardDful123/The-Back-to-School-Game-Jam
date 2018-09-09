@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class TreeTop : MonoBehaviour {
@@ -22,6 +23,7 @@ public class TreeTop : MonoBehaviour {
 
         if (health <= 0)
         {
+            SceneManager.LoadScene("Lose");
             Destroy(this.gameObject);
         }
 
