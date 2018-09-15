@@ -34,7 +34,7 @@ public class SaleUp : MonoBehaviour {
                 level++;
                 money.moneyValue -= cost;
                 woodCarrier.saleMoney++;
-                cost += 10;
+                cost *= 3;
             }
         }
     }

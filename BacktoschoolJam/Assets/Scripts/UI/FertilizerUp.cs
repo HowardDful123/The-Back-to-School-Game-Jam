@@ -33,9 +33,9 @@ public class FertilizerUp : MonoBehaviour {
             {
                 ChangeLevelColor();
                 level++;
-                treeGrowth.GetComponent<TreesGrowth>().growSpeed -= 0.5f;
+                treeGrowth.GetComponent<TreesGrowth>().growSpeed -= 0.90f;
                 money.moneyValue -= cost;
-                 cost += 10;
+                 cost *= 6;
             }
         }
     }
