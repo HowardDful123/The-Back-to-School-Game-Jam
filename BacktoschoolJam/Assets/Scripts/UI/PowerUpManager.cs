@@ -14,32 +14,23 @@ public class PowerUpManager : MonoBehaviour {
     public int cost;
     public int taxCost;
 
-    private int taxLevel;
-
     void Update()
     {
         capacityText.text = "Capacity: " + woodCarrier.plankNumber + "/" + woodCarrier.plankCapacity;    
         capacityCost.text = "Cost: $" + cost;
         decreaseTaxText.text = "Tax: $" + money.taxAmount;
-        if (taxLevel < 3)
-        {
-            decreaseTaxCost.text = "Cost: $" + taxCost;
-        }
-        else
-        {
-            decreaseTaxCost.text = "Max Leveled";
-        }
+        decreaseTaxCost.text = "Cost: $" + taxCost;
+
     }
 
     public void DecreaseTax()
     {
-        if(taxLevel < 3)
-        {
-            money.taxAmount -= 5;
-            money.moneyValue -= taxCost;
-            taxLevel++;
-            taxCost += 30;
-        }
+         if (money.moneyValue >= taxCost)
+         {
+             money.taxAmount -= 5;
+             money.moneyValue -= taxCost;
+             taxCost += 30;
+         }
     }
 
     public void CapacityUp()

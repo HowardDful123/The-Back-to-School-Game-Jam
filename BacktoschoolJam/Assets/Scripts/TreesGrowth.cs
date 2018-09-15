@@ -18,8 +18,9 @@ public class TreesGrowth : MonoBehaviour {
     public TextMeshProUGUI difficultyCounterText;
     public AudioSource cuttingWood;
     public int globalHealth;
+    public MoneyManager moneyManager;
 
-
+    private int taxCounter;
     private float difficultyCounter;
     private bool difficultyTextOn;
     private float difficultyTextTime;
@@ -31,6 +32,7 @@ public class TreesGrowth : MonoBehaviour {
     void Start()
     {
         //woodCarrier.GetComponent<WoodCarrier>().plankNumber;
+        taxCounter = 1;
         difficultyCounter = difficultyCheckpoint;
         treeBodyQ = new Queue<GameObject>();
         childcount = content.childCount;
@@ -49,6 +51,14 @@ public class TreesGrowth : MonoBehaviour {
 
         if (difficultyTime >= difficultyCheckpoint)
         {
+            if (taxCounter >= 2)
+            {
+                moneyManager.taxAmount += 5;
+            }
+            else
+            {
+                taxCounter++;
+            }
             globalHealth += 2;
             isDifficultyIncreased = true;
             foreach (Transform child in content.transform)

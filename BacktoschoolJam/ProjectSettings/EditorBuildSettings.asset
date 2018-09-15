@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Lose.unity
     guid: 30ad595e35a13964eb04d24bff85735a
+  - enabled: 1
+    path: Assets/Scenes/LoseDebt.unity
+    guid: 716e5b6f9d187ee4c85ffc4128b9e5eb
   m_configObjects: {}

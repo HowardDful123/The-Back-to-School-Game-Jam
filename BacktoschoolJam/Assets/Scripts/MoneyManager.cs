@@ -9,7 +9,7 @@ public class MoneyManager : MonoBehaviour {
     public int taxAmount;
 
     public bool inDebt;
-    private float debtCounter;
+    public float debtCounter;
 
     // Use this for initialization
     void Start () {
@@ -42,9 +42,9 @@ public class MoneyManager : MonoBehaviour {
     {
         if (moneyValue < 0)
         {
-            SceneManager.LoadScene("Lose");
+            SceneManager.LoadScene("LoseDebt");
         }
         moneyValue -= taxAmount;
-        debtCounter = 200;
+        debtCounter = 250;
     }
 }
