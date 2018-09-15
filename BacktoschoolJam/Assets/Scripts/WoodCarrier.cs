@@ -6,9 +6,10 @@ using UnityEngine;
 public class WoodCarrier : MonoBehaviour {
     public GameObject plankPrefab;
     public Transform content;
-    public Money moneyBoi;
+    public MoneyManager moneyBoi;
     public int plankCapacity;
     public int plankNumber;
+    public int saleMoney;
 
     private float stackingNumber = 0.22f;
     private int childcount;
@@ -41,7 +42,7 @@ public class WoodCarrier : MonoBehaviour {
             for (int i = 4; i <= childcount; i++)
             {
                 Destroy(content.GetComponent<Transform>().GetChild(i).gameObject);
-                moneyBoi.moneyValue++;
+                moneyBoi.moneyValue += saleMoney;
             }
             plankNumber = 0;
         }

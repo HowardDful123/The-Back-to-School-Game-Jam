@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Money : MonoBehaviour {
-    public int moneyValue;
 
     // Use this for initialization
     void Start () {
@@ -14,6 +13,6 @@ public class Money : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        GetComponent<Text>().text = "Money: " + moneyValue;
+        GetComponent<TextMeshProUGUI>().text = "Money: $" + GetComponentInParent<MoneyManager>().moneyValue;
     }
 }

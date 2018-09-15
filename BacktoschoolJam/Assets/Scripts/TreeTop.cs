@@ -43,6 +43,9 @@ public class TreeTop : MonoBehaviour {
 
     public void DealDamage()
     {
+        treesGrowth.GetComponent<AudioSource>().volume = Random.Range(0.7f, 1f);
+        treesGrowth.GetComponent<AudioSource>().pitch = Random.Range(0.8f, 1.1f);
+        treesGrowth.GetComponent<AudioSource>().Play();
         health -= treesGrowth.damage;
         ChangeColor();
     }

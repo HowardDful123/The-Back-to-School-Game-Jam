@@ -58,7 +58,7 @@ public class TreesGrowth : MonoBehaviour {
             top.GetComponent<TreeTop>().IncreaseHealth();
             difficultyTextOn = true;
             difficultyTime = 0;
-            difficultyCheckpoint += 10;
+            difficultyCheckpoint += 20;
             difficultyCounter = difficultyCheckpoint;
         }
 
@@ -138,8 +138,8 @@ public class TreesGrowth : MonoBehaviour {
             if (woodCarrier.GetComponent<WoodCarrier>().plankNumber < woodCarrier.GetComponent<WoodCarrier>().plankCapacity)
             {
                 Destroy(GetComponent<Transform>().GetChild(0).gameObject);
-                woodCarrier.GetComponent<WoodCarrier>().plankNumber++;
-                woodCarrier.GetComponent<WoodCarrier>().AddPlank();
+                woodCarrier.plankNumber++;
+                woodCarrier.AddPlank();
             }
             
 

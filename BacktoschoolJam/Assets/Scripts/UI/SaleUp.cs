@@ -1,20 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 
-public class AttackSpeedUp : MonoBehaviour {
-    public Player player;
+public class SaleUp : MonoBehaviour {
     public Transform imageLevel;
     public TextMeshProUGUI text;
     public MoneyManager money;
+    public WoodCarrier woodCarrier;
     public int level;
     public int cost;
 
-    public void Update()
-    {
-        if (level < 4)
+
+	void Update () {
+        if (level < 5)
         {
             text.text = "Cost: $" + cost;
         }
@@ -28,26 +28,23 @@ public class AttackSpeedUp : MonoBehaviour {
     {
         if (money.moneyValue >= cost)
         {
-            if (level < 4)
+            if (level < 5)
             {
                 ChangeLevelColor();
                 level++;
-                player.GetComponent<Player>().delaytime -= 0.25f;
                 money.moneyValue -= cost;
-                cost *= 4;
+                woodCarrier.saleMoney++;
+                cost += 10;
             }
-            
         }
     }
 
     public void ChangeLevelColor()
     {
-        if (level < 4)
+        if (level < 5)
         {
             imageLevel.GetComponent<Transform>().GetChild(level).GetComponent<Image>().color = new Color(1f, 0, 0, .7f);
         }
 
     }
-
-
 }
