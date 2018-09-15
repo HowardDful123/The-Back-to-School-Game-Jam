@@ -7,16 +7,39 @@ public class PowerUpManager : MonoBehaviour {
     public GameObject powerUpUIPanel;
     public Text capacityText;
     public Text capacityCost;
+    public Text decreaseTaxText;
+    public Text decreaseTaxCost;
     public WoodCarrier woodCarrier;
-    public Money money;
+    public MoneyManager money;
     public int cost;
+    public int taxCost;
 
-
+    private int taxLevel;
 
     void Update()
     {
         capacityText.text = "Capacity: " + woodCarrier.plankNumber + "/" + woodCarrier.plankCapacity;    
-        capacityCost.text = "Cost: " + cost;
+        capacityCost.text = "Cost: $" + cost;
+        decreaseTaxText.text = "Tax: $" + money.taxAmount;
+        if (taxLevel < 3)
+        {
+            decreaseTaxCost.text = "Cost: $" + taxCost;
+        }
+        else
+        {
+            decreaseTaxCost.text = "Max Leveled";
+        }
+    }
+
+    public void DecreaseTax()
+    {
+        if(taxLevel < 3)
+        {
+            money.taxAmount -= 5;
+            money.moneyValue -= taxCost;
+            taxLevel++;
+            taxCost += 30;
+        }
     }
 
     public void CapacityUp()

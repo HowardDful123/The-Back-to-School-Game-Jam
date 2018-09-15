@@ -8,7 +8,7 @@ public class FertilizerUp : MonoBehaviour {
     public TreesGrowth treeGrowth;
     public Transform imageLevel;
     public TextMeshProUGUI text;
-    public Money money;
+    public MoneyManager money;
     public int level;
     public int cost;
 
@@ -16,7 +16,7 @@ public class FertilizerUp : MonoBehaviour {
     {
         if (level < 4)
         {
-            text.text = "Cost: " + cost;
+            text.text = "Cost: $" + cost;
         }
         else
         {
@@ -33,7 +33,7 @@ public class FertilizerUp : MonoBehaviour {
             {
                 ChangeLevelColor();
                 level++;
-                treeGrowth.GetComponent<TreesGrowth>().growSpeed -= 1f;
+                treeGrowth.GetComponent<TreesGrowth>().growSpeed -= 0.5f;
                 money.moneyValue -= cost;
                  cost += 10;
             }

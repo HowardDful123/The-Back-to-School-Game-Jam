@@ -8,7 +8,7 @@ public class AttackDamageUp : MonoBehaviour {
     public TreesGrowth treesGrowth;
     public Transform imageLevel;
     public TextMeshProUGUI text;
-    public Money money;
+    public MoneyManager money;
     public int level;
     public int cost;
 
@@ -16,7 +16,7 @@ public class AttackDamageUp : MonoBehaviour {
     {
         if (level < 7)
         {
-            text.text = "Cost: " + cost;
+            text.text = "Cost: $" + cost;
         }
         else
         {
