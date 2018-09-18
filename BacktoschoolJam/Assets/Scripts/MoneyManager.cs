@@ -11,11 +11,14 @@ public class MoneyManager : MonoBehaviour {
     public bool inDebt;
     public float debtCounter;
 
+    private float taxCounterDeduction;
     // Use this for initialization
     void Start () {
         GetComponent<Transform>().GetChild(2).GetComponent<TextMeshProUGUI>().enabled = false;
         debtCounter = 250;
-	}
+        taxCounterDeduction = 250;
+
+    }
 	
 	// Update is called once per frame
 	void Update () {    
@@ -35,6 +38,11 @@ public class MoneyManager : MonoBehaviour {
         if (debtCounter <= 0)
         {
             CollectTax();
+            if (taxCounterDeduction >= 100)
+            {
+                taxCounterDeduction -= 20;
+            }
+            debtCounter = taxCounterDeduction;
         }
     }
 
@@ -45,6 +53,5 @@ public class MoneyManager : MonoBehaviour {
             SceneManager.LoadScene("LoseDebt");
         }
         moneyValue -= taxAmount;
-        debtCounter = 250;
     }
 }

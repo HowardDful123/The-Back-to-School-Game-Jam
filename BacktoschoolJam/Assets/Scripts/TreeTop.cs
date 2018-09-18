@@ -27,7 +27,7 @@ public class TreeTop : MonoBehaviour {
             Destroy(this.gameObject);
         }
 
-        GetComponentInChildren<TextMeshPro>().text = "Health: " + health;
+
 
         if (colorChanged)
         {

@@ -68,7 +68,10 @@ public class TreesGrowth : MonoBehaviour {
             top.GetComponent<TreeTop>().IncreaseHealth();
             difficultyTextOn = true;
             difficultyTime = 0;
-            difficultyCheckpoint += 20;
+            if (difficultyCheckpoint >= 110)
+            {
+                difficultyCheckpoint -= 10;
+            }
             difficultyCounter = difficultyCheckpoint;
         }
 
