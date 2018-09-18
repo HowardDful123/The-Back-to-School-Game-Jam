@@ -34,7 +34,7 @@ public class AttackDamageUp : MonoBehaviour {
                 level++;
                 treesGrowth.GetComponent<TreesGrowth>().damage += 2;
                 money.moneyValue -= cost;
-                cost *= 3;
+                cost *= 4;
             }
         }
     }
